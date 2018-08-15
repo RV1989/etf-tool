@@ -11,7 +11,7 @@ app.get('/api/etf/:ticker', async (req, res) => {
 })
 
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(process.env.port || 3000 )
 
 async function getHoldings(ticker) {
     let url = `http://etfdb.com/etf/${ticker}/`

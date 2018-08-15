@@ -63,12 +63,10 @@ export default {
   methods: {
     async loadEtf1() {
       let res = await getHoldings(this.etf1);
-      console.log(res);
       this.etf1Holdings = res;
     },
     async loadEtf2() {
       let res = await getHoldings(this.etf2);
-      console.log(res);
       this.etf2Holdings = res;
     }
   },
