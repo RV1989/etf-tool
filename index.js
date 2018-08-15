@@ -20,10 +20,24 @@ async function getHoldings(ticker) {
     let $ = cheerio.load(urlHtml.data)
     let partialDataURL = $('ol.holdings-ol table').attr('data-url')
     let dataUrl = `http://etfdb.com/${encodeURI(partialDataURL)}&sort=weight&order=desc&limit=50000&offset=0`
+
+    let tickerRegEx = /\/stock\/(.{1,6})\//
+
     let dataRes = await axios.get(dataUrl)
     let holdings = dataRes.data.rows.map(((x) => {
         ret = {}
         ret.weight = x.weight
+        tickerRaw = tickerRegEx.exec(x.holding)
+        
+        if (tickerRaw) {
+            let ticker = tickerRaw[1].replace('.','-')
+            ret.ticker =`<a href="https://finance.yahoo.com/quote/${ticker}?p=${ticker}">${ticker}</a>`
+        }
+        else{
+            ret.ticker = `<a>unkown</a>`
+        }
+
+        
         ret.holding = x.holding.replace(/href=\"\/stock\//, 'href="http://etfdb.com/stock/')
         return ret
     }))

@@ -14,6 +14,7 @@
           class="elevation-1">
           <template slot="items" slot-scope="props">
             <td v-html="props.item.holding" ></td>
+            <td v-html="props.item.ticker" ></td>
             <td class="text-xs-left">{{ props.item.weight }}</td>
           </template>
         </v-data-table>
@@ -34,6 +35,7 @@
           class="elevation-1">
           <template slot="items" slot-scope="props">
             <td v-html="props.item.holding" ></td>
+            <td v-html="props.item.ticker" ></td>
             <td class="text-xs-left">{{ props.item.weight }}</td>
           </template>
         </v-data-table>
@@ -49,7 +51,9 @@ export default {
     return {
       headers: [
         { text: "holding", value: "holding" },
-        { text: "weight", value: "weight" }
+        {text:"ticker",value:"ticker"},
+        { text: "weight", value: "weight" },
+        
       ],
       isActive:false,
 
