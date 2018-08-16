@@ -21,7 +21,7 @@ async function getHoldings(ticker) {
     let partialDataURL = $('ol.holdings-ol table').attr('data-url')
     let dataUrl = `http://etfdb.com/${encodeURI(partialDataURL)}&sort=weight&order=desc&limit=50000&offset=0`
 
-    let tickerRegEx = /\/stock\/(.{1,6})\//
+    let tickerRegEx = /\/stock\/(.{1,8})\//
 
     let dataRes = await axios.get(dataUrl)
     let holdings = dataRes.data.rows.map(((x) => {
