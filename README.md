@@ -4,6 +4,9 @@
 
 https://etf-tool.herokuapp.com/
 
+## Discription
+fetches holdings from etfDb and only lists the common holdings and there percentage in the etf
+
 ## Project setup
 ```
 npm install
