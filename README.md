@@ -1,5 +1,9 @@
 # etf-tool
 
+## Live preview
+
+https://etf-tool.herokuapp.com/
+
 ## Project setup
 ```
 npm install
